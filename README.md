@@ -16,12 +16,12 @@ Things you may want to cover:
 ## furima table
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
- image               |string | null     |
- category            |string | null      |
- product name        |string | null       |
- address             |string | null       |
- price               |string | null       |
- ------------------ | ------ | -----------  | 
+|image               |string | null: false  |
+|category            |string | null: false　|
+|product name        |string | null: false　|
+|address             |string | null: false  |
+|price               |string | null: false |
+|------------------ | ------ | -----------  | 
 ## commentsテーブル
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
