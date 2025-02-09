@@ -5,20 +5,23 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+## users テーブル
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| name               | string | string|
+| email              | string | null: false, unique: true |
+| password           | string | null: false |
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## furima table
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+ image               |string | null     |
+ category            |string | null      |
+ product name        |string | null       |
+ address             |string | null       |
+ price               |string | null       |
+ ------------------ | ------ | -----------  | 
+## commentsテーブル
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
