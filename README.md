@@ -10,10 +10,11 @@ Things you may want to cover:
 | ------------------ | ------ | ----------- |
 | name               | string | null: false |
 | email              | string | null: false, unique: true |
-| password           | string | null: false |
-| password_confirmation| string |null: false |
+| encrypted_password   | string | null: false |
 | firstname           | string | null: false |
 | lastname          | string | null: false |
+| firstname_katakana           | string | null: false |
+| lastname_katakana          | string | null: false |
 | birth_day         | date    | null: false 
 
 ### Association
@@ -28,23 +29,21 @@ Things you may want to cover:
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | name               | string  |  null: false    |
-|image               |string | null: false  |
 |price               |integer| null: false　|
 | user               |references|  null: false,foreign_key:true|
-|tax                 |boolean   | null: false |
-| text               |text       |            |
-| genre              |integer       |   null: false         |
-| quality            |integer    |   null: false         |
-| payment            |integer        |  null: false          |
-| prefecture             |integer       | null: false           |
-| days                |integer       |  null: false          |
+| category_id        |integer       |   null: false         |
+| text               |text       |   null: false         |
+| quality_id            |integer    |   null: false         |
+| payment_id            |integer        |  null: false          |
+| prefecture_id             |integer       | null: false           |
+| scheduled_delivery_id    |integer       |  null: false          |
 
 
 ### Association
 
 * belongs_to:user
-* has_many :comments,
-* has_many :order
+* has_many :comments
+* has_one :order
 
 ## commentsテーブル
 | Column             | Type   | Options     |
@@ -66,18 +65,19 @@ Things you may want to cover:
 
 ### Association
 
-* belongs_to:user belongs_to:item
-* belongs_to:address
+* belongs_to:user 
+* belongs_to:item
+* has_one:address
 
 ## addressesテーブル
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| postal_code          |sting  |  null: false     |
-| prefecture         |integer   |  null: false     |
-| city               |sting  |  null: false     |
-| house_number       |sting  |  null: false     |
-| building_nume        |sting  |                   |
-| phone_number         |sting  |  null: false     |
+| postal_code          |string  |  null: false     |
+| prefecture_id         |integer   |  null: false     |
+| city               |string  |  null: false     |
+| house_number       |string  |  null: false     |
+| building_name        |srting  |                   |
+| phone_number         |string  |  null: false     |
 | order               |references|  null: false,foreign_key:true      |
 
 ### Association
