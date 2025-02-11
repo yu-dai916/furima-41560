@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :birth_day, presence: true
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  PASSWORD_REGEX_ZENKAKU = /\A[ぁ-んァ-ヶ一-龥々]+\z/.freeze
+  PASSWORD_REGEX_ZENKAKU = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/.freeze
   PASSWORD_REGEX_KATAKANA = /\A[ァ-ヶー－]+\z/.freeze
 
   validates :password,  format: { with: PASSWORD_REGEX }
