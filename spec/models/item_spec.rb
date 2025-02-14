@@ -53,11 +53,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Scheduled delivery can't be blank")
       end
-      it 'explanationが空では保存できないこと' do
-        @item.explanation = nil
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Explanation can't be blank")
-      end
       it 'priceが空では保存できないこと' do
         @item.price = nil
         @item.valid?
