@@ -69,24 +69,39 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price must be less than 9999999')
       end
       it "quality_idの値が、id:0,name:'--'の時は保存できないこと" do
-        @item.quality_id = [0]
+        @item.quality_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Quality can't be blank", 'Quality is not a number')
       end
+      it "categoryの値が、id:0,name:'--'の時は保存できないこと" do
+        @item.category = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank", 'Category is not a number')
+      end
       it "payment_idの値が、id:0,name:'--'の時は保存できないこと" do
-        @item.payment_id = [0]
+        @item.payment_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Payment can't be blank", 'Payment is not a number')
       end
       it "prefecture_idの値が、id:0,name:'--'の時は保存できないこと" do
-        @item.prefecture_id = [0]
+        @item.prefecture_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank", 'Prefecture is not a number')
       end
       it "scheduled_delivery_idの値が、id:0,name:'--'の時は保存できないこと" do
-        @item.scheduled_delivery_id = [0]
+        @item.scheduled_delivery_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Scheduled delivery can't be blank", "Scheduled delivery is not a number")
+        it 'userが紐付いていなければ出品できない' do
+          @item.user = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include("User can't be blank")
+          it '価格に半角数字以外が含まれている場合は出品できない' do
+            @item.price = "aaa"
+            @item.valid?
+            expect(@price.errors.full_messages).to include("Price can't be blank")
+  
+        end
       end
     end
   end
