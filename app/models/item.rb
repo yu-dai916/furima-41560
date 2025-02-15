@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :scheduled_delivery
   
   validates :name, presence: true
-  validates :price, numericality: { less_than: 9_999_999, greater_than: 300,  message: "can't be blank"}
+  validates :price, numericality: { less_than_or_equal_to: 9_999_999, greater_than_or_equal_to: 300,  message: "can't be blank"}
   validates :image, presence: true
   validates :price, presence: true
   validates :explanation, presence: true  
