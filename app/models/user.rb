@@ -20,4 +20,6 @@ class User < ApplicationRecord
   validates :lastname, format: { with: PASSWORD_REGEX_ZENKAKU }
   validates :firstname_katakana, format: { with: PASSWORD_REGEX_KATAKANA }
   validates :lastname_katakana, format: { with: PASSWORD_REGEX_KATAKANA }
+
+  belongs_to :item
 end
