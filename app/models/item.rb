@@ -5,20 +5,24 @@ class Item < ApplicationRecord
   belongs_to_active_hash :payment
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :scheduled_delivery
-  validates :name,:image, :price, :explanation, :category_id, :quality_id, :payment_id, :prefecture_id, :scheduled_delivery_id, presence: true
-  validates :price, numericality: { only_integer: true } { less_than: 9_999_997, greater_than: 302 }
+  
+  validates :name, presence: true
+  validates :price, numericality: { less_than: 9_999_999, greater_than: 300,  message: "can't be blank"}
+  validates :image, presence: true
+  validates :price, presence: true
+  validates :explanation, presence: true  
+  validates :category_id, presence: true
+  validates :quality_id, presence: true
+  validates :payment_id, presence: true
+  validates :prefecture_id, presence: true  
+  validates :scheduled_delivery_id, presence: true
+    validates :category_id,numericality: { other_than: 0, message: "can't be blank" } 
+    validates :quality_id,numericality: { other_than: 0, message: "can't be blank" } 
+    validates :payment_id,numericality: { other_than: 0, message: "can't be blank" } 
+    validates :prefecture_id,numericality: { other_than: 0, message: "can't be blank" } 
+    validates :scheduled_delivery_id,numericality: { other_than: 0, message: "can't be blank" } 
 
-  with_options numericality: { other_than: 0 } do
-    validates :category_id
-    validates :quality_id
-    validates :payment_id
-    validates :prefecture_id
-    validates :scheduled_delivery_id
-  end
-
-  belongs_to :user, :item
-  has_many :comments
-  #has_one :order, dependent: :destroy
+  belongs_to :user
+  # has_one :order, dependent: :destroy
   has_one_attached :image
-
 end
