@@ -15,6 +15,10 @@ class ItemsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+def show
+  @item = Item.find(params[:id])
+end
   private
   def item_params
     params.require(:item).permit(:name, :price, :category_id, :explanation, :quality_id, :payment_id, :prefecture_id, :scheduled_delivery_id, :image).merge(user_id: current_user.id)
