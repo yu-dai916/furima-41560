@@ -21,5 +21,5 @@ class User < ApplicationRecord
   validates :firstname_katakana, format: { with: PASSWORD_REGEX_KATAKANA }
   validates :lastname_katakana, format: { with: PASSWORD_REGEX_KATAKANA }
 
-  belongs_to :item
+  has_many :items
 end
