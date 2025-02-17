@@ -36,7 +36,7 @@ def destroy
   if @item.destroy
     redirect_to root_path
   else
-    render :show
+    render :edit, status: :unprocessable_entity
   end
 end
   private
