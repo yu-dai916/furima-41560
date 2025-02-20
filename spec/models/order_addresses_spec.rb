@@ -8,13 +8,7 @@ RSpec.describe OrderAddress, type: :model do
       @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
     end
     context '商品購入がうまくいくとき' do
-      it "priceとtokenがあれば保存ができること" do
-        expect(@order_address).to be_valid
-      end
-      it 'user_idとitem_idが存在すれば登録できる' do
-        expect(@order_address).to be_valid
-      end
-      it 'postal_codeとprefectuire_idとcityとhouse_numberとphone_number_とorder_idが存在すれば登録できる' do
+      it "必要な情報がすべて揃っていれば保存ができる" do
         expect(@order_address).to be_valid
       end
       it 'postal_codeがハイフン含めた7桁の数字なら登録できる' do
@@ -25,8 +19,8 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.phone_number = '12345678901'
         expect(@order_address).to be_valid
       end
-      it 'house_numberが空でも保存できる' do
-        @order_address.house_number = nil
+      it 'buliding_nameが空でも保存できる' do
+        @order_address.building_name = nil
         expect(@order_address).to be_valid
       end
     end
@@ -47,6 +41,11 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.item_id = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Item can't be blank")
+      end
+      it 'house_numberが空では保存できないこと' do
+        @order_address.house_number = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("House number can't be blank")
       end
       it 'postal_codeが空では保存できないこと' do
         @order_address.postal_code = nil
