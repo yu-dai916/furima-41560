@@ -22,4 +22,5 @@ class User < ApplicationRecord
   validates :lastname_katakana, format: { with: PASSWORD_REGEX_KATAKANA }
 
   has_many :items
+  has_many :orders
 end

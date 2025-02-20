@@ -23,6 +23,9 @@ def show
 end
 
 def edit
+    if @item.order.present?
+      redirect_to root_path
+    end
 end
 def update
   if @item.update(item_params)
@@ -45,7 +48,7 @@ end
   end
 
   def contributor_confirmation
-    redirect_to root_path unless current_user.id == @item.user.id
+    redirect_to root_path unless current_user.id == @item.user.id 
   end
 
   def set_item
