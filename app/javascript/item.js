@@ -4,9 +4,11 @@ function item (){
 priceInput.addEventListener("input", () => {
    const inputValue = priceInput.value;
 const addTaxDom = document.getElementById("add-tax-price");
-    addTaxDom.innerHTML = Math.floor(inputValue / 10)
+ const tax = Math.floor(inputValue / 10)
+    addTaxDom.innerHTML = tax;
+
     const profit = document.getElementById("profit");
-    profit.innerHTML = Math.floor(inputValue - (inputValue / 10));
+    profit.innerHTML = inputValue - tax;
 })
 };
 window.addEventListener('turbo:load', item);
